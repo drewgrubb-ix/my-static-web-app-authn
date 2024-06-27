@@ -5,18 +5,16 @@
   },
   "routes": [
     {
-      "route": "/.auth/login/twitter",
-      "statusCode": 404
-    },
-    {
-      "route": "/.auth/login/github",
-      "statusCode": 404
-    },
-    {
-      "route": "/api/products/*",
+      "route": "/*",
       "allowedRoles": ["authenticated"]
     }
   ],
+  "responseOverrides": {
+        "401": {
+            "redirect": "/.auth/login/aad",
+            "statusCode": 302
+        }
+  },
   "auth": {
     "identityProviders": {
       "azureActiveDirectory": {
