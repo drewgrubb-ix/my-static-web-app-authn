@@ -1,27 +1,29 @@
 {
+  "routes": [
+    {
+      "route": "/api/products/*",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/.auth/login/twitter",
+      "statusCode": 404
+    },
+    {
+      "route": "/.auth/login/github",
+      "statusCode": 404
+    }
+  ],
   "navigationFallback": {
     "rewrite": "/index.html",
     "exclude": ["*.{css,scss,js,png,gif,ico,jpg,svg}"]
-  },
-  "routes": [
-    {
-      "route": "/*",
-      "allowedRoles": ["authenticated"]
-    }
-  ],
-  "responseOverrides": {
-        "401": {
-            "redirect": "/.auth/login/aad",
-            "statusCode": 302
-        }
   },
   "auth": {
     "identityProviders": {
       "azureActiveDirectory": {
         "registration": {
           "openIdIssuer": "https://login.microsoftonline.com/54fc2f42-aca6-4d82-a237-c9c724fcc44d/v2.0",
-          "clientIdSettingName": "c70cc6e6-e6d8-4ab5-ac0b-337f387dcc60",
-          "clientSecretSettingName": "CYd8Q~ApXWZNXo4fHim25zvpZ6_YAj0nWbFkvbYO"
+          "clientIdSettingName": "AZURE_CLIENT_ID",
+          "clientSecretSettingName": "AZURE_CLIENT_SECRET"
         }
       }
     }
